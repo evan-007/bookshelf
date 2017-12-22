@@ -17,6 +17,7 @@ defmodule BookshelfWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/learning_resources", LearningResourceController
   end
 
   # Other scopes may use custom stacks.

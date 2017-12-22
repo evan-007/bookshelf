@@ -10,7 +10,8 @@ defmodule Bookshelf.StoreTest do
       description: "some description",
       title: "some title",
       type: "book",
-      url: "some url"
+      url: "some url",
+      preview_image_url: "some image",
     }
     @invalid_attrs %{description: nil, title: nil, type: nil, url: nil}
 

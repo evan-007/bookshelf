@@ -7,6 +7,7 @@ defmodule Bookshelf.Repo.Migrations.CreateLearningResources do
       add :title, :string
       add :description, :text
       add :url, :string
+      add :preview_image_url, :string
 
       timestamps()
     end
