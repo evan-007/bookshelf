@@ -1,1 +1,9 @@
 /* This file is for your main application css. */
+/* import other stylesheets here */
+/* @import url('./test.css'); */
+
+@import url('./test.css');
+
+.cat {
+  color: red;
+}
