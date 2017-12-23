@@ -22,9 +22,8 @@
   </div>
 
   <div>
-    <input type="submit" value="Login"/>
+    <input type="submit" value="Sign up"/>
   </div>
-
 <% end  %>
 
 

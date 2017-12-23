@@ -25,4 +25,18 @@ defmodule Bookshelf.Accounts do
     |> User.changeset(attrs)
     |> Repo.insert()
   end
+
+  def get_user_by_email(email) do
+    query = from u in User,
+    where: u.email == ^email,
+    limit: 1
+
+    users = Repo.all(query)
+    case users do
+      [%User{}] ->
+        List.first(users)
+      [] ->
+        :not_found
+    end
+  end
 end

@@ -33,5 +33,17 @@ defmodule Bookshelf.AccountsTest do
     test "create_user/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Accounts.create_user(@invalid_attrs)
     end
+
+    test "get_user_by_email/1 finds a user" do
+      user = user_fixture()
+
+      assert user = Accounts.get_user_by_email(user.email)
+    end
+
+    test "get_user_by_email/1 can't find a user" do
+      user_fixture()
+
+      assert :not_found = Accounts.get_user_by_email("no@notfound.com")
+    end
   end
 end

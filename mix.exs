@@ -45,6 +45,7 @@ defmodule Bookshelf.Mixfile do
       {:ueberauth_identity, "~> 0.2"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
+      {:guardian, "~> 1.0"},
     ]
   end
 
