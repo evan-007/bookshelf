@@ -22,9 +22,6 @@
             <%= else %>
               <li><%= link "Sign in", to: session_path(@conn, :new) %></li>
             <% end %>
-
-
-
           </ul>
         </nav>
         <span class="logo"></span>
