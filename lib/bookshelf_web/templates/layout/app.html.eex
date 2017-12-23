@@ -16,7 +16,15 @@
       <header class="header">
         <nav role="navigation">
           <ul>
-            <%= link "Sign in", to: session_path(@conn, :new) %>
+            <%= if @current_user do %>
+              <li><%= link "Sign out", to: session_path(@conn, :delete), method: :delete %></li>
+              <li><%= @current_user.username %></li>
+            <%= else %>
+              <li><%= link "Sign in", to: session_path(@conn, :new) %></li>
+            <% end %>
+
+
+
           </ul>
         </nav>
         <span class="logo"></span>

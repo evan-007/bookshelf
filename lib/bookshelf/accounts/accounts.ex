@@ -26,6 +26,10 @@ defmodule Bookshelf.Accounts do
     |> Repo.insert()
   end
 
+  def get_user(id) do
+    Repo.get(User, id)
+  end
+
   def get_user_by_email(email) do
     query = from u in User,
     where: u.email == ^email,

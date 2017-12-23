@@ -1,4 +1,3 @@
-require IEx
 defmodule BookshelfWeb.SessionController do
   use BookshelfWeb, :controller
   alias Bookshelf.Accounts
@@ -9,6 +8,7 @@ defmodule BookshelfWeb.SessionController do
       user && check_password(user, password) ->
         # do something to persist the session with guardian
         conn
+        |> BookshelfWeb.Guardian.Plug.sign_in(user)
         |> put_flash(:info, "Welcome back")
         |> redirect(to: learning_resource_path(conn, :index))
       true ->
@@ -21,6 +21,13 @@ defmodule BookshelfWeb.SessionController do
 
   def new(conn, _params) do
     render conn, "new.html"
+  end
+
+  def delete(conn, _params) do
+    conn
+    |> BookshelfWeb.Guardian.Plug.sign_out()
+    |> put_flash(:info, "good bye!")
+    |> redirect(to: learning_resource_path(conn, :index))
   end
 
   defp check_password(user, password) do

@@ -53,3 +53,8 @@ config :bookshelf, Bookshelf.Repo,
   database: "bookshelf_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :bookshelf, BookshelfWeb.Guardian,
+  issuer: "bookshelf",
+  secret_key: "so_secret",
+  ttl: {30, :days}
