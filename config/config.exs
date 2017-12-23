@@ -22,6 +22,17 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# configures Ueberauth
+
+config :ueberauth, Ueberauth,
+  providers: [
+    identity: { Ueberauth.Strategy.Identity, [
+        nickname_field: :username,
+        uuid_field: :email,
+        callback_methods: ["POST"]
+    ]}
+  ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

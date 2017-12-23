@@ -20,6 +20,14 @@ defmodule BookshelfWeb.Router do
     resources "/learning_resources", LearningResourceController
   end
 
+  scope "/auth", BookshelfWeb do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+    post "/identity/callback", AuthController, :identity_callback
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", BookshelfWeb do
   #   pipe_through :api
