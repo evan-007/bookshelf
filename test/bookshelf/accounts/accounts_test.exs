@@ -37,7 +37,7 @@ defmodule Bookshelf.AccountsTest do
     test "get_user_by_email/1 finds a user" do
       user = user_fixture()
 
-      assert user = Accounts.get_user_by_email(user.email)
+      assert user.id == Accounts.get_user_by_email(user.email).id
     end
 
     test "get_user_by_email/1 can't find a user" do

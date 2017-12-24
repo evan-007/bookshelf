@@ -54,4 +54,9 @@ defmodule Bookshelf.Store do
     |> LearningResource.changeset(attrs)
     |> Repo.insert()
   end
+
+  def new_learning_resource() do
+    %LearningResource{}
+    |> LearningResource.changeset(%{})
+  end
 end

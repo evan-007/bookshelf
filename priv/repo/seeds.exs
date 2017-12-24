@@ -10,12 +10,20 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
+{:ok, user} = Bookshelf.Accounts.create_user(%{
+  username: "admin",
+  email: "admin@admin.com",
+  password: "password",
+  password_confirmation: "password",
+})
+
 Bookshelf.Repo.insert!(%Bookshelf.Store.LearningResource{
   title: "Phoenix for Rails Developers",
   description: "it's a book",
   type: "book",
   url: "http://www.phoenixforrailsdevelopers.com",
-  preview_image_url: "http://www.phoenixforrailsdevelopers.com/images/cover.jpg"
+  preview_image_url: "http://www.phoenixforrailsdevelopers.com/images/cover.jpg",
+  user: user
 })
 
 Bookshelf.Repo.insert!(%Bookshelf.Store.LearningResource{
@@ -23,4 +31,5 @@ Bookshelf.Repo.insert!(%Bookshelf.Store.LearningResource{
   description: "it's a video",
   type: "video",
   url: "https://scrimba.com/g/gR8PTE",
+  user: user
 })

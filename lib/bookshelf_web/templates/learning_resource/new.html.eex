@@ -1,0 +1,32 @@
+<h2>Add a resource</h2>
+
+<%= form_for @changeset, learning_resource_path(@conn, :create), fn f -> %>
+  <div>
+    <label>Title</label>
+    <%= text_input f, :title %>
+  </div>
+
+  <div>
+    <label>Type</label>
+    <%= select f, :type, ["book", "article", "video"] %>
+  </div>
+
+  <div>
+    <label>URL</label>
+    <%= text_input f, :url %>
+  </div>
+
+  <div>
+    <label>Description</label>
+    <%= text_input f, :description %>
+  </div>
+
+  <div>
+    <label>Preview image url</label>
+    <%= text_input f, :preview_image_url %>
+  </div>
+
+  <div><%= submit "Submit" %>
+  </div>
+
+<% end %>

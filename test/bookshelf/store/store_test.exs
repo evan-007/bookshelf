@@ -12,6 +12,7 @@ defmodule Bookshelf.StoreTest do
       type: "book",
       url: "some url",
       preview_image_url: "some image",
+      user_id: 1 # use a factory instead!
     }
     @invalid_attrs %{description: nil, title: nil, type: nil, url: nil}
 
@@ -39,6 +40,7 @@ defmodule Bookshelf.StoreTest do
       assert "can't be blank" in errors_on(changeset).description
       assert "can't be blank" in errors_on(changeset).url
       assert "can't be blank" in errors_on(changeset).type
+      assert "can't be blank" in errors_on(changeset).user_id
     end
 
     test "create_learning_resource/1 when duplicate title" do
@@ -65,6 +67,10 @@ defmodule Bookshelf.StoreTest do
       error = catch_error(Store.get_learning_resource!(9))
 
       assert %Ecto.NoResultsError{} = error
+    end
+
+    test "new_learning_resource/0 returns a changeset" do
+      assert %Ecto.Changeset{} = Store.new_learning_resource()
     end
   end
 end
