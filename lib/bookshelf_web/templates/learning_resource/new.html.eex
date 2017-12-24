@@ -4,29 +4,35 @@
   <div>
     <label>Title</label>
     <%= text_input f, :title %>
+    <%= error_tag f, :title %>
   </div>
 
   <div>
     <label>Type</label>
     <%= select f, :type, ["book", "article", "video"] %>
+    <%= error_tag f, :type %>
   </div>
 
   <div>
     <label>URL</label>
     <%= text_input f, :url %>
+    <%= error_tag f, :url %>
   </div>
 
   <div>
     <label>Description</label>
     <%= text_input f, :description %>
+    <%= error_tag f, :description %>
   </div>
 
   <div>
     <label>Preview image url</label>
     <%= text_input f, :preview_image_url %>
+    <%= error_tag f, :preview_image_url %>
   </div>
 
-  <div><%= submit "Submit" %>
+  <div>
+    <%= submit "Submit" %>
   </div>
 
 <% end %>

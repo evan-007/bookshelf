@@ -1,0 +1,9 @@
+<%= link "Show all", to: learning_resource_path(@conn, :index) %>
+
+<h2><%= @learning_resource.title %></h2>
+
+<div><%= img_tag @learning_resource.preview_image_url %></div>
+
+<p><%= @learning_resource.description %></p>
+
+

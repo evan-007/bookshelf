@@ -2,7 +2,6 @@
   <%= for resource <- @learning_resources do %>
     <div class="resource">
       <h3><%= resource.title %> <small><%= resource.type %></small></h3>
-      <p><%= resource.description %></p>
       <%= img_tag resource.preview_image_url, class: "resource preview-image" %>
     </div>
   <% end %>

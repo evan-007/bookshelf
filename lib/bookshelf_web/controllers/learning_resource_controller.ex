@@ -16,13 +16,23 @@ defmodule BookshelfWeb.LearningResourceController do
   end
 
   def create(conn, %{"learning_resource" => learning_resource_params}) do
-    # TODO handle errors
-    learning_resource_params
+    case learning_resource_params
     |> Enum.into(%{"user_id" => conn.assigns.current_user.id}) # assumes user is logged in
-    |> Store.create_learning_resource()
+    |> Store.create_learning_resource() do
+      {:ok, learning_resource} ->
+        conn
+        |> put_flash(:info, "resource created, thanks!")
+        |> redirect(to: learning_resource_path(conn, :show, learning_resource))
+      {:error, changeset} ->
+        conn
+        |> render "new.html", changeset: changeset
+    end
+  end
+
+  def show(conn, %{"id" => id}) do
+    learning_resource = Store.get_learning_resource!(id)
 
     conn
-    |> put_flash(:info, "resource created, thanks!")
-    |> redirect(to: learning_resource_path(conn, :index))
+    |> render "show.html", learning_resource: learning_resource
   end
 end
