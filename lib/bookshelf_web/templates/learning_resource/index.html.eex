@@ -1,8 +1,10 @@
   <h2>learning resources</h2>
   <%= for resource <- @learning_resources do %>
     <div class="resource">
-      <h3><%= resource.title %> <small><%= resource.type %></small></h3>
-      <%= img_tag resource.preview_image_url, class: "resource preview-image" %>
+      <h3><%= link resource.title, to: learning_resource_path(@conn, :show, resource) %> <small><%= resource.type %></small></h3>
+      <%= link to: learning_resource_path(@conn, :show, resource) do %>
+        <%= img_tag resource.preview_image_url, class: "resource preview-image" %>
+      <% end %>
     </div>
   <% end %>
 
