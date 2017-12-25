@@ -19,7 +19,7 @@
             <%= if @current_user do %>
               <li><%= link "Sign out", to: session_path(@conn, :delete), method: :delete %></li>
               <li><%= @current_user.username %></li>
-            <%= else %>
+            <% else %>
               <li><%= link "Sign in", to: session_path(@conn, :new) %></li>
             <% end %>
           </ul>
