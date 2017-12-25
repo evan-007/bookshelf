@@ -23,8 +23,4 @@ defmodule BookshelfWeb.Guardian do
     resource = Bookshelf.Accounts.get_user(id)
     {:ok,  resource}
   end
-
-  def resource_from_claims(_claims) do
-    {:error, :reason_for_error}
-  end
 end

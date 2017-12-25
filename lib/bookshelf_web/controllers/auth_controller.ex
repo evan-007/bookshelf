@@ -2,7 +2,6 @@ defmodule BookshelfWeb.AuthController do
   use BookshelfWeb, :controller
   plug Ueberauth
 
-  alias Ueberauth.Strategy.Helpers
   alias Bookshelf.Accounts
 
   def request(conn, _params) do
@@ -17,8 +16,9 @@ defmodule BookshelfWeb.AuthController do
         conn
         |> put_flash(:info, "thanks for signing up")
         |> redirect(to: learning_resource_path(conn, :index))
-      {:error, _changeset} ->
-        # put error data in the form?
+      {:error, changeset} ->
+        # TODO: put error data in the form
+        render conn, "request.html", changeset: changeset
     end
   end
 end

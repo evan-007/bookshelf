@@ -1,9 +1,5 @@
 defmodule BookshelfWeb.LearningResourceControllerTest do
   use BookshelfWeb.ConnCase
-  @valid_params %{
-    "title" => "title",
-    "description" => "description",
-  }
 
   test "GET /learning_resources", %{conn: conn} do
     conn = get conn, "/learning_resources"
