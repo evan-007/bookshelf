@@ -15,13 +15,16 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
-          <ul>
+          <ul class="nav-menu">
             <%= if @current_user do %>
-              <li><%= link "Sign out", to: session_path(@conn, :delete), method: :delete %></li>
-              <li><%= @current_user.username %></li>
+              <li class="menu-item"><%= link "Sign out", to: session_path(@conn, :delete), method: :delete %></li>
+              <li class="menu-item"><%= @current_user.username %></li>
             <% else %>
-              <li><%= link "Sign in", to: session_path(@conn, :new) %></li>
+              <li class="menu-item"><%= link "Sign in", to: session_path(@conn, :new) %></li>
             <% end %>
+            <li class="menu-item"><%= link "Home", to: page_path(@conn, :index) %>
+            <li class="menu-item"><%= link "Resources", to: learning_resource_path(@conn, :index) %>
+
           </ul>
         </nav>
         <span class="logo"></span>
